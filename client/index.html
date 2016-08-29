@@ -60,6 +60,17 @@
     <script type="text/javascript">
         let negociacaoController = new NegociacaoController();
     </script>
+    <script type="text/javascript">
+        let negociacao = new Proxy(new Negociacao(new Date(), 2, 10), {
+            get: function(target, prop, receiver) {
+                console.log(`a propriedade "${prop}" foi interceptada`);
+                return Reflect.get(target, prop, receiver);
+            }
+        });
+
+        console.log(negociacao.quantidade);
+        console.log(negociacao.valor);
+    </script>
 </body>
 
 </html>
