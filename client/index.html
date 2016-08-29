@@ -61,15 +61,15 @@
         let negociacaoController = new NegociacaoController();
     </script>
     <script type="text/javascript">
-        let negociacao = new Proxy(new Negociacao(new Date(), 2, 10), {
+        let lista = new Proxy(new ListaNegociacoes(), {
+
             set: function(target, prop, value, receiver) {
                 console.log(`valor anterior ${target[prop]}, novo valor ${value}`);
                 return Reflect.set(target, prop, value, receiver);
             }
         });
 
-        negociacao._quantidade = 12;
-        negociacao._valor = 200;
+        lista.adicionar(new Negociacao(new Date(), 2, 310));
     </script>
 </body>
 
