@@ -30,7 +30,7 @@ class NegociacaoService {
                             new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
                     } else {
                         console.log(xhr.responseText);
-                        reject('Não foi possivel obter as negociaçoes da semana');
+                        reject('Não foi possivel obter as negociaçoes da semana anterior');
                     }
                 }
             }
@@ -41,7 +41,7 @@ class NegociacaoService {
     obterNegociacoesDaSemanaRetrasada(callBack) {
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'negociacoes/retrasada');
+            xhr.open('GET', 'negociacoes/retrasadax');
             xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
@@ -49,7 +49,7 @@ class NegociacaoService {
                             new Negociacao(new Date(objeto.data), objeto.quantidade, objeto.valor)));
                     } else {
                         console.log(xhr.responseText);
-                        reject('Não foi possivel obter as negociaçoes da semana');
+                        reject('Não foi possivel obter as negociaçoes da semana retrasada');
                     }
                 }
             }
