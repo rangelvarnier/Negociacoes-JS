@@ -38,6 +38,7 @@ class NegociacaoController {
     apagar() {
         this._listaNegociacoes.esvasiar();
         this._mensagem.texto = "Negociações apagadas com sucesso!";
+
     }
 
     _criarNegociacao() {
