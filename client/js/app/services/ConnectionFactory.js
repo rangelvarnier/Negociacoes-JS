@@ -2,7 +2,7 @@
 // com uma function auto invocada (function (){})();
 var ConnectionFactory = (function() {
     const stores = ['negociacoes'];
-    const version = 3;
+    const version = 1;
     const dbName = 'aluraframe';
 
     var connection = null;
@@ -37,13 +37,13 @@ var ConnectionFactory = (function() {
 
                 openRequest.onerror = e => {
                     console.log('Erro ao abrir conexão');
-                    reject(e.target.error.name);
+                    reject(e.target.error);
                 };
             });
         }
 
         static _createStores(connection) {
-            if (connection.objectStoreNames.connection(stores)) {
+            if (connection.objectStoreNames.contains(stores)) {
                 connection.deleteObjectStore(stores);
             }
             connection.createObjectStore(stores, {
